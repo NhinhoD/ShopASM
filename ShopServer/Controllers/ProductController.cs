@@ -8,13 +8,8 @@ namespace ShopServer.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class ProductController(IProduct _productService) : ControllerBase
     {
-        private readonly IProduct _productService;
-        public ProductController(IProduct productService)
-        {
-            _productService = productService;
-        }
         [HttpGet]
         public async Task<ActionResult<List<Product>>> GetAllProduct(bool featuredProducts)
         {
